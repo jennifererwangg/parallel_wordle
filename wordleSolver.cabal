@@ -1,0 +1,91 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.35.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           wordleSolver
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/jennifererwangg/parallel_wordle>
+homepage:       https://github.com/jennifererwangg/parallel_wordle#readme
+bug-reports:    https://github.com/jennifererwangg/parallel_wordle/issues
+author:         Jennifer Wang
+maintainer:     xw2763@columbia.edu
+copyright:      2022 Jennifer Wang
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/jennifererwangg/parallel_wordle
+
+library
+  exposed-modules:
+      Heuristics.Entropy
+      Heuristics.Frequency
+      Heuristics.Minimax
+      Interactive
+      Parser
+      Player
+      WordleGame
+  other-modules:
+      Paths_wordleSolver
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , containers
+    , deepseq
+    , monad-par
+    , parallel
+    , parseargs
+    , split
+    , text
+  default-language: Haskell2010
+
+executable wordleSolver-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_wordleSolver
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -O2 -threaded -rtsopts -with-rtsopts=-N -eventlog
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , containers
+    , deepseq
+    , monad-par
+    , parallel
+    , parseargs
+    , split
+    , text
+    , wordleSolver
+  default-language: Haskell2010
+
+test-suite wordleSolver-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_wordleSolver
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N -eventlog
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , containers
+    , deepseq
+    , monad-par
+    , parallel
+    , parseargs
+    , split
+    , text
+    , wordleSolver
+  default-language: Haskell2010
